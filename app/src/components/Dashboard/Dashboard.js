@@ -4,11 +4,14 @@ import './Dashboard.css'
 
 import Mock from '../../Mock';
 
-const Dashboard = () => {
+const Dashboard = ({stack}) => {
 
-    const { items } = Mock
+    console.log(stack)
+    
+    const { data: { items }} = stack
 
     return (
+
 
       <div id="Dashboard">
         {items.map((item, index) => (

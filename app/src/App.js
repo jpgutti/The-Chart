@@ -11,6 +11,23 @@ const Mobile = props => <Responsive {...props} maxWidth={991} />
 
 const App = () => {
 
+  const [items, setItems] = useState(undefined)
+
+  useEffect(() => {
+    async function fetchData(){
+      const data = await axios.get("//localhost:8080/api/stackflow?perPage=12");
+  
+      const { data: { stack }} = data
+      
+      setItems(stack);
+    }
+
+    fetchData();
+
+  }, [])
+
+  console.log(items)
+
   return (
     <div className="App">
       <Desktop>
@@ -19,7 +36,11 @@ const App = () => {
       <Mobile>
         <TopBar/>
       </Mobile>
-      <Dashboard/>
+      {items !== undefined ?
+        <Dashboard stack={items}/>
+        :
+        "Loading..."
+      }
     </div>
   );
 }

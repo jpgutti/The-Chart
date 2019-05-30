@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Form from '../Form/Form';
 import './Sidebar.css'
+import UserSettings from '../UserSettings/UserSettings'
 
 
 const SideBar = () => {
@@ -17,6 +18,9 @@ const SideBar = () => {
                 <hr/>
             </div>
             <Form/>
+            {logged &&
+              <UserSettings/>
+            }
         </div>
       </div>
     )

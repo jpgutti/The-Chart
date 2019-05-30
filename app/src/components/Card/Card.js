@@ -4,8 +4,6 @@ import Arrow from '../../Svgs'
 
 const Card = ({item}) => {
 
-    console.log(item)
-
     return(
         <div id="Card" className="github">
             <h3>Stack Overflow</h3>
