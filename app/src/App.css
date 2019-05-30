@@ -1,6 +1,12 @@
+@keyframes shine {
+    to {
+        background-position: 200% center;
+      }
+} 
+
 .App {
-    display: "grid";
-    grid-template-columns: "1fr 4fr";
+    display: grid;
+    grid-template-columns: 1fr 4fr;
 }
 
 
@@ -8,4 +14,20 @@
     .App {
         display: initial;
     }
+}
+
+.Loading {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+    animation: shine 1s linear infinite;
+    background: linear-gradient(135deg, #ff8b32 1%,#d6e22b 17%,#28d3a8 36%,#1f7cc4 56%,#8f28d3 78%,#e57bb2 100%); 
+    font-size: 30px;
+    font-weight: 500;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
 }

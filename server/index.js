@@ -9,8 +9,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
-app.get("/teste", (req, res) => {
-    res.send("Ok, it worked")
-})
+require('./controllers/authController')(app)
+require('./controllers/proxyController')(app)
 
 app.listen(8080, () => console.log("Up and running"))

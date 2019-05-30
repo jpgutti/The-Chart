@@ -5,8 +5,8 @@ body {
 
 #Card {
     height: 300px;
-    width: 280px;
-    box-shadow: 1px 11px 18px 3px rgba(0,0,0, 0.2);
+    max-width: 280px;
+    box-shadow: 1px 11px 18px 3px rgba(178,53,76, 0.3);
     border-radius: 8px;
     border-top-left-radius: 50px;
     position: relative;
@@ -18,10 +18,10 @@ body {
 }
 
 #Card.github {
-    background: #7db9e8; 
+    /* background: #7db9e8; 
     background: -moz-linear-gradient(-45deg, #7db9e8 0%, #2989d8 50%, #207cca 61%, #207cca 61%, #1e5799 100%);
     background: -webkit-linear-gradient(-45deg, #7db9e8 0%,#2989d8 50%,#207cca 61%,#207cca 61%,#1e5799 100%);
-    background: linear-gradient(135deg, #7db9e8 0%,#2989d8 50%,#207cca 61%,#207cca 61%,#1e5799 100%);
+    background: linear-gradient(135deg, #7db9e8 0%,#2989d8 50%,#207cca 61%,#207cca 61%,#1e5799 100%); */
     /* background: #ac48ff;
     background: -moz-linear-gradient(-45deg, #ac48ff 0%, #502bfe 100%);
     background: -webkit-linear-gradient(-45deg, #ac48ff 0%,#502bfe 100%);
@@ -30,6 +30,10 @@ body {
     background: -moz-linear-gradient(-45deg, #05ce88 0%, #04d60a 100%);
     background: -webkit-linear-gradient(-45deg, #05ce88 0%,#04d60a 100%);
     background: linear-gradient(135deg, #05ce88 0%,#04d60a 100%); */
+    background: #fc4c6c;
+    background: -moz-linear-gradient(-45deg, #fc4c6c 0%, #f97c16 100%);
+    background: -webkit-linear-gradient(-45deg, #fc4c6c 0%,#f97c16 100%);
+    background: linear-gradient(135deg, #fc4c6c 0%,#f97c16 100%);
 }
 
 #Card.stack {
@@ -70,10 +74,10 @@ body {
 }
 
 #Card h1 {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 400;
-    line-height: 1.8;
-    letter-spacing: 1px;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
     color: #fff;
     margin-bottom: 0;
     margin-top: auto;
