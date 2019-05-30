@@ -1,28 +1,34 @@
 import React, { useEffect, useState } from 'react'
 import Form from '../Form/Form';
-import './Sidebar.css'
+import './Sidebar.css';
+import Context from '../Context/context';
 import UserSettings from '../UserSettings/UserSettings'
-
 
 const SideBar = () => {
 
     const [logged, setLogged] = useState(true)
 
     return (
-      <div id="Sidebar">
-        <div className="Stick">
-            <div className="Sidebar__Header">
-                <h3>{logged ? "Hey," : "The"}</h3>
-                <h1>{logged ? "João Pedro" : "Charts"}</h1>
-                <p>Your daily news about anything</p>
-                <hr/>
-            </div>
-            <Form/>
-            {logged &&
-              <UserSettings/>
-            }
+      <Context.Consumer>
+      {context => (
+        <div id="Sidebar">
+          {console.log(context)}
+          <div className="Stick">
+              <div className="Sidebar__Header">
+                  <h3>{context.user !== undefined ? "Hey," : "The"}</h3>
+                  <h1>{context.user !== undefined ? context.user.name : "Charts"}</h1>
+                  <p>Your daily news about anything</p>
+                  <hr/>
+              </div>
+              {context.user !== undefined ?
+                <UserSettings/>
+                :
+                <Form />
+              }
+          </div>
         </div>
-      </div>
+      )}
+      </Context.Consumer>
     )
 }
 

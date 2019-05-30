@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 const UserSettings = () => {
 
     return (
-        <div></div>
+        <div>SETTINGS</div>
     )
 }
 
