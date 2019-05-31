@@ -27,7 +27,7 @@ const App = () => {
     
     async function fetchData(){
       
-      const data = await axios.get("//localhost:8080/api/stackflow?perPage=24");
+      const data = await axios.get(process.env.REACT_APP_API_URL + "?perPage=28");
   
       const { data: { stack }} = data
       
