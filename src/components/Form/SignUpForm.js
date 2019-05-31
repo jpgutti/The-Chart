@@ -27,26 +27,29 @@ class SignUpForm extends React.Component {
                 this.context.handleUser(user);
             }).catch(({response}) => {
                 const { data } = response
-                console.log(data)
             })
 
 
         this.setState({loading: false})
         
     }
+    
+    handleChange(e, key){
+        this.setState({user: {...this.state.user, [key]: e.target.value}})
+    }
 
     
 
     render(){
 
-        const { loading } = this.state;
+        const { loading, user } = this.state;
 
         return(
             <div id="SignUp">
                 <form>
-                    <input required onChange={(e) => this.setState({...this.state.user, name: e.target.value})} type="text" placeholder="Name"/>
-                    <input required onChange={(e) => this.setState({...this.state.user, email: e.target.value})} type="email" placeholder="E-mail"/>
-                    <input required onChange={(e) => this.setState({...this.state.user, password: e.target.value})} type="password" placeholder="Password"/>
+                    <input required onChange={(e) => this.handleChange(e, "name")} type="text" placeholder="Name"/>
+                    <input required onChange={(e) => this.handleChange(e, "email")} type="email" placeholder="E-mail"/>
+                    <input required onChange={(e) => this.handleChange(e, "password")} type="password" placeholder="Password"/>
                     <button type="submit" onClick={(e) => this.handleSumbit(e)} className="SumbitBtn">
                     {loading ?
                         <Loader type="TailSpin" color="#fff" height={20} width={20} />

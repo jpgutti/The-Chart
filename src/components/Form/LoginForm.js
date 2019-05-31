@@ -29,7 +29,6 @@ class LoginForm extends React.Component {
         .catch(({response}) => {
 
             const { data } = response
-            console.log(data)
 
         })
 
@@ -37,8 +36,6 @@ class LoginForm extends React.Component {
     }    
     
     render(){
-
-        console.log(this.context)
         
 
         const { loading, user } = this.state
