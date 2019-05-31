@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Card.css'
-import Arrow from '../../Svgs'
+import { Arrow, Heart, HeartOutline} from '../../Svgs'
 
 const Card = ({item, source}) => {
+
+    const [fav, setFav] = useState(false);
+
 
     function getSource(src){
         switch(src){
@@ -32,6 +35,9 @@ const Card = ({item, source}) => {
             <a target="blank" href={item.link} className="btn">
                 <Arrow/>
             </a>
+            <div className="Favorite">
+                <HeartOutline/>
+            </div>
             <h1>{normalizeTitle(item.title)}</h1>
         </div>
     )

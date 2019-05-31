@@ -3,6 +3,7 @@ import axios from 'axios'
 import SideBar from './components/SideBar/SideBar';
 import Dashboard from './components/Dashboard/Dashboard';
 import Responsive from 'react-responsive';
+import Snackbar from '@material-ui/core/Snackbar';
 import TopBar from './components/TopBar/TopBar';
 import Context from './components/Context/context';
 import './App.css'
@@ -14,6 +15,13 @@ const App = () => {
 
   const [items, setItems] = useState(undefined)
   const [user, setUser] = useState(undefined)
+  const [snack, setSnack] = useState({
+    open: false,
+    horizontal: "center",
+    vertical: "top"
+  })
+
+  const [error, setError] = useState(undefined)
 
   useEffect(() => {
     
@@ -31,6 +39,11 @@ const App = () => {
 
   }, [])
 
+  function handleClose(){
+    setSnack({ ...snack, open: false})
+    setError(undefined)
+  }
+
   function handleUser(user) {
     console.log("Handling User...");
     setUser(user);
@@ -40,6 +53,7 @@ const App = () => {
     <div className="App">
       <Context.Provider value={{
         user: user,
+        error: error,
         handleUser: handleUser
       }}>
           <Desktop>
@@ -53,6 +67,17 @@ const App = () => {
             :
             <div className="Loading">Loading...</div>
           }
+          <Snackbar
+            className="SnackBar"
+            anchorOrigin={{ vertical: snack.vertical, horizontal: snack.horizontal }}
+            key={`${snack.vertical},${snack.horizontal}`}
+            open={error !== undefined ? true : false}
+            onClose={handleClose}
+            ContentProps={{
+            'aria-describedby': 'message-id',
+            }}
+            message={<span id="message-id">teste snack</span>}
+          />
       </Context.Provider>
     </div>
   )

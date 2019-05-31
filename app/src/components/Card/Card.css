@@ -5,7 +5,7 @@ body {
 
 #Card {
     height: 300px;
-    max-width: 280px;
+    width: 280px;
     box-shadow: 1px 11px 18px 3px rgba(178,53,76, 0.3);
     border-radius: 8px;
     border-top-left-radius: 50px;
@@ -119,4 +119,21 @@ body {
     font-size: 14px;
     padding-right: 25px;
     text-align: right;
+}
+
+.Favorite {
+    display: flex;;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    background: #fff;
+    border-radius: 50%;
+    left: 20px;
+    top: 20px;
+}
+
+.Favorite svg {
+    fill: red;
 }

@@ -1,40 +1,59 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
+import Context from '../Context/context';
 import Loader from 'react-loader-spinner';
 import './Form.css'
 
-const SignUpForm = () => {
+class SignUpForm extends React.Component {
 
-    const [loading, setLoading] = useState(false);
-    const [user, setUser] = useState({});
+    static contextType = Context
 
-    async function handleSumbit(){
-        setLoading(true)
+    state = {
+        loading: false,
+        user: {}
+    }
 
-        const response = await axios.post("//localhost:8080/auth/register", user);
+    handleSumbit = () => {
 
-        console.log(response);
+        const { user } = this.state
 
-        setLoading(false)
+        this.setState({loading: true})
+
+        axios.post("//localhost:8080/auth/register", user)
+            .then(data => {
+                console.log(data)
+            }).catch(({response}) => {
+                console.log(response);
+            })
+
+
+        this.setState({loading: false})
         
     }
 
-    return(
-        <div id="SignUp">
-            <form>
-                <input required onChange={(e) => setUser({...user, name: e.target.value})} type="text" placeholder="Name"/>
-                <input required onChange={(e) => setUser({...user, email: e.target.value})} type="email" placeholder="E-mail"/>
-                <input required onChange={(e) => setUser({...user, password: e.target.value})} type="password" placeholder="Password"/>
-                <button type="submit" onClick={() => handleSumbit()} className="SumbitBtn">
-                {loading ?
-                    <Loader type="TailSpin" color="#fff" height={20} width={20} />
-                    :
-                    "Submit"
-                }
-                </button>
-            </form>
-        </div>
-    )
+    
+
+    render(){
+
+        const { loading } = this.state;
+
+        return(
+            <div id="SignUp">
+                <form>
+                    <input required onChange={(e) => this.setState({...this.state.user, name: e.target.value})} type="text" placeholder="Name"/>
+                    <input required onChange={(e) => this.setState({...this.state.user, email: e.target.value})} type="email" placeholder="E-mail"/>
+                    <input required onChange={(e) => this.setState({...this.state.user, password: e.target.value})} type="password" placeholder="Password"/>
+                    <button type="submit" onClick={() => this.handleSumbit()} className="SumbitBtn">
+                    {loading ?
+                        <Loader type="TailSpin" color="#fff" height={20} width={20} />
+                        :
+                        "Submit"
+                    }
+                    </button>
+                </form>
+            </div>
+        )
+    }
 }
 
 export default SignUpForm
