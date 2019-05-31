@@ -19,11 +19,14 @@ class SignUpForm extends React.Component {
 
         this.setState({loading: true})
 
-        axios.post("//localhost:8080/auth/register", user)
-            .then(data => {
-                console.log(data)
+        axios.post(REACT_APP_API_URL + "/auth/register", user)
+            .then(({data}) => {
+                const { user } = data
+
+                this.context.handleUser(user);
             }).catch(({response}) => {
-                console.log(response);
+                const { data } = response
+                console.log(data)
             })
 
 

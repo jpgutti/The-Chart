@@ -18,7 +18,7 @@ class LoginForm extends React.Component {
         
         const { user } = this.state
 
-        axios.post("//localhost:8080/auth/authenticate", user)
+        axios.post(REACT_APP_API_URL + "/auth/authenticate", user)
         .then(({data}) => {
 
             const { user } = data
@@ -29,8 +29,7 @@ class LoginForm extends React.Component {
         .catch(({response}) => {
 
             const { data } = response
-
-
+            console.log(data)
 
         })
 
