@@ -18,7 +18,7 @@ class LoginForm extends React.Component {
         
         const { user } = this.state
 
-        axios.post(REACT_APP_API_URL + "/auth/authenticate", user)
+        axios.post(process.env.REACT_APP_API_URL + "/auth/authenticate", user)
         .then(({data}) => {
 
             const { user } = data

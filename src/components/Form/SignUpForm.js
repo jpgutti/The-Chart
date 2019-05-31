@@ -13,13 +13,14 @@ class SignUpForm extends React.Component {
         user: {}
     }
 
-    handleSumbit = () => {
+    handleSumbit = (e) => {
+        e.preventDefault()
 
         const { user } = this.state
 
         this.setState({loading: true})
 
-        axios.post(REACT_APP_API_URL + "/auth/register", user)
+        axios.post(process.env.REACT_APP_API_URL + "/auth/register", user)
             .then(({data}) => {
                 const { user } = data
 
@@ -46,7 +47,7 @@ class SignUpForm extends React.Component {
                     <input required onChange={(e) => this.setState({...this.state.user, name: e.target.value})} type="text" placeholder="Name"/>
                     <input required onChange={(e) => this.setState({...this.state.user, email: e.target.value})} type="email" placeholder="E-mail"/>
                     <input required onChange={(e) => this.setState({...this.state.user, password: e.target.value})} type="password" placeholder="Password"/>
-                    <button type="submit" onClick={() => this.handleSumbit()} className="SumbitBtn">
+                    <button type="submit" onClick={(e) => this.handleSumbit(e)} className="SumbitBtn">
                     {loading ?
                         <Loader type="TailSpin" color="#fff" height={20} width={20} />
                         :
