@@ -18,6 +18,7 @@ const UserSchema = new mongoose.Schema({
     required: true,
     select: false
   },
+  favoriteList: [String],
   createdAt: {
     type: Date,
     default: Date.now
